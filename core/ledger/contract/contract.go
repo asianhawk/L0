@@ -61,7 +61,7 @@ type SmartConstract struct {
 	smartContractTxs types.Transactions
 }
 
-// NewState returns a new State
+// NewSmartConstract returns a new State
 func NewSmartConstract(db *db.BlockchainDB, ledgerHandler ILedgerSmartContract) *SmartConstract {
 	return &SmartConstract{
 		dbHandler:     db,
@@ -85,7 +85,7 @@ func (sctx *SmartConstract) StartConstract(blockHeight uint32) {
 func (sctx *SmartConstract) StopContract(blockHeight uint32) {
 	log.Debugf("stopConstract() for blockHeight [%d]", blockHeight)
 	if sctx.height != blockHeight {
-		log.Errorf("Different blockHeight in contract-begin [%s] and contract-finish [%s]", sctx.height, blockHeight)
+		log.Errorf("Different blockHeight in contract-begin [%d] and contract-finish [%d]", sctx.height, blockHeight)
 	}
 
 	sctx.height = 0
